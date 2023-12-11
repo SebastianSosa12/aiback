@@ -5,9 +5,9 @@ import com.example.aifinalback.modelo.Cliente;
 import com.example.aifinalback.servicios.interfaces.IClienteService;
 import com.example.aifinalback.views.ClienteView;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,23 +19,33 @@ public class ClienteController {
 
     private final IClienteService clienteService;
     private ClienteController(IClienteService clienteService) {
-        this.clienteService=clienteService;
+        this.clienteService =clienteService;
     }
 
+
     //LISTAR CLIENTES
+    @GetMapping(path="/listar")
     public List<ClienteView> getClientes(){
         log.debug("Called getClientes from Controller");
         return clienteService.findAll().stream().map(Cliente::toView).toList();
     }
+    //@GetMapping(path="/listar")
+    //public ResponseEntity<?> listarClientes(){
+    //    return ResponseEntity.status(HttpStatus.OK).body(ClienteController.getClientes());
+    //}
+
     //AGREGAR CLIENTE
+
     public ClienteView agregarCliente(Cliente cliente){
         return clienteService.save(cliente).toView();
     }
     //GUARDAR CLIENTE
+    @PostMapping
     public Cliente guardarCliente(Cliente cliente){
         return clienteService.save(cliente);
     }
     //ACTUALIZAR CLIENTE
+    @PutMapping("/ID/{id}")
     public Cliente actualizarCliente(Cliente cliente, int id){
         return clienteService.update(cliente, id);
     }
@@ -44,6 +54,7 @@ public class ClienteController {
         clienteService.deleteById(id);
     }
     //BUSCAR CLIENTE (GET BY ID)
+    @GetMapping(path="/buscar/{id}")
     public ClienteView buscarCliente(int id) throws ClienteException {
         return clienteService.findById(id).orElseThrow(() -> new ClienteException("Cliente no encontrado")).toView();
     }
