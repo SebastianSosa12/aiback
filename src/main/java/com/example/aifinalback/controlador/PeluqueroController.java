@@ -5,16 +5,14 @@ import com.example.aifinalback.modelo.Peluquero;
 import com.example.aifinalback.servicios.interfaces.IPeluqueroService;
 import com.example.aifinalback.views.PeluqueroView;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
-@RequestMapping("/api/peluquero")
+@RequestMapping("/api/peluqueros")
 @Slf4j
 public class PeluqueroController {
 
@@ -24,31 +22,38 @@ public class PeluqueroController {
     }
 
     //LISTAR PELUQUEROS
+    @GetMapping(path="/listar")
     public List<PeluqueroView> getPeluqueros(){
         log.debug("Called getPeluqueros from Controller");
         return peluqueroService.findAll().stream().map(Peluquero::toView).toList();
     }
     //AGREGAR PELUQUERO
+
     public PeluqueroView agregarPeluquero(Peluquero peluquero){
         return peluqueroService.save(peluquero).toView();
     }
     //GUARDAR PELUQUERO
-    public Peluquero guardarPeluquero(Peluquero peluquero){
+    @PostMapping
+    public Peluquero guardarPeluquero(@RequestBody Peluquero peluquero){
         return peluqueroService.save(peluquero);
     }
     //ACTUALIZAR PELUQUERO
-    public Peluquero actualizarPeluquero(Peluquero peluquero, int id){
+    @PutMapping("/ID/{id}")
+    public Peluquero actualizarPeluquero(@RequestBody Peluquero peluquero,@PathVariable int id){
         return peluqueroService.update(peluquero, id);
     }
     //ELIMINAR PELUQUERO
-    public void eliminarPeluquero(int id){
+    @DeleteMapping(path="eliminar/{id}")
+    public void eliminarPeluquero(@PathVariable int id){
         peluqueroService.deleteById(id);
     }
     //BUSCAR PELUQUERO (GET BY ID)
-    public PeluqueroView buscarPeluquero(int id) throws PeluqueroException {
+    @GetMapping(path ="/buscar/{id}")
+    public PeluqueroView buscarPeluquero(@PathVariable int id) throws PeluqueroException {
         return peluqueroService.findById(id).orElseThrow(() -> new PeluqueroException("Peluquero no encontrado")).toView();
     }
     //LISTAR PELUQUEROS PRACTICANTES
+    @GetMapping(path="/practicantes")
     public List<PeluqueroView> getPeluquerosPracticantes(){
         log.debug("Called getPeluquerosPracticantes from Controller");
         List<PeluqueroView> peluqueros = peluqueroService.findAll().stream().map(Peluquero::toView).toList();
@@ -60,6 +65,7 @@ public class PeluqueroController {
         return peluquerosOk;
     }
     //LISTAR PELUQUEROS NO PRACTICANTES
+    @GetMapping(path="/nopracticantes")
     public List<PeluqueroView> getPeluquerosNoPracticantes(){
         log.debug("Called getPeluquerosNoPracticantes from Controller");
         List<PeluqueroView> peluqueros = peluqueroService.findAll().stream().map(Peluquero::toView).toList();
