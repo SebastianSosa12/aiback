@@ -32,8 +32,8 @@ public class ClienteController {
     }
 
     //AGREGAR CLIENTE
-
-    public ClienteView agregarCliente(Cliente cliente){
+    @PostMapping
+    public ClienteView agregarCliente(@RequestBody Cliente cliente){
         return clienteService.save(cliente).toView();
     }
     //GUARDAR CLIENTE

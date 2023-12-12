@@ -28,8 +28,8 @@ public class PeluqueroController {
         return peluqueroService.findAll().stream().map(Peluquero::toView).toList();
     }
     //AGREGAR PELUQUERO
-
-    public PeluqueroView agregarPeluquero(Peluquero peluquero){
+    @PostMapping
+    public PeluqueroView agregarPeluquero(@RequestBody Peluquero peluquero){
         return peluqueroService.save(peluquero).toView();
     }
     //GUARDAR PELUQUERO
