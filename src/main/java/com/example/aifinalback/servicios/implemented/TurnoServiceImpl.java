@@ -1,6 +1,6 @@
 package com.example.aifinalback.servicios.implemented;
 
-import com.example.aifinalback.modelo.Turno;
+import com.example.aifinalback.modelos.Turno;
 import com.example.aifinalback.repositorios.TurnoRepositorio;
 import com.example.aifinalback.servicios.interfaces.ITurnoService;
 import lombok.extern.slf4j.Slf4j;

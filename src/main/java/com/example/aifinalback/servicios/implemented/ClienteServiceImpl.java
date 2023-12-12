@@ -1,6 +1,6 @@
 package com.example.aifinalback.servicios.implemented;
 
-import com.example.aifinalback.modelo.Cliente;
+import com.example.aifinalback.modelos.Cliente;
 import com.example.aifinalback.repositorios.ClienteRepositorio;
 import com.example.aifinalback.servicios.interfaces.IClienteService;
 import lombok.extern.slf4j.Slf4j;

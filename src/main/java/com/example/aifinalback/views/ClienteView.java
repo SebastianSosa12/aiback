@@ -1,6 +1,5 @@
 package com.example.aifinalback.views;
 
-import ch.qos.logback.core.net.server.Client;
 import lombok.*;
 
 @NoArgsConstructor

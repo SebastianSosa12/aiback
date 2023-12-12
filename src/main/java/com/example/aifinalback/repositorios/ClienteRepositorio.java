@@ -1,6 +1,6 @@
 package com.example.aifinalback.repositorios;
 
-import com.example.aifinalback.modelo.Cliente;
+import com.example.aifinalback.modelos.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

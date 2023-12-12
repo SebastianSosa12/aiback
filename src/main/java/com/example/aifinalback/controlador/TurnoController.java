@@ -1,7 +1,7 @@
 package com.example.aifinalback.controlador;
 
 import com.example.aifinalback.exceptions.TurnoException;
-import com.example.aifinalback.modelo.Turno;
+import com.example.aifinalback.modelos.Turno;
 import com.example.aifinalback.servicios.interfaces.ITurnoService;
 import com.example.aifinalback.views.TurnoView;
 import lombok.extern.slf4j.Slf4j;
@@ -50,10 +50,10 @@ public class TurnoController {
     }
     //TURNOS POR CLIENTE
     @GetMapping(path="/porcliente/{id}")
-    public List<TurnoView> getTurnosByCliente(@PathVariable int id){
-        List<TurnoView> turnos = turnoService.findAll().stream().map(Turno::toView).toList();
-        List<TurnoView> turnosOk= new ArrayList<>();
-        for (TurnoView turno: turnos){
+    public List<Turno> getTurnosByCliente(@PathVariable int id){
+        List<Turno> turnos = turnoService.findAll().stream().toList();
+        List<Turno> turnosOk= new ArrayList<>();
+        for (Turno turno: turnos){
             if (id == turno.getCliente().getId()){
                 turnosOk.add(turno);
             }
@@ -62,10 +62,10 @@ public class TurnoController {
     }
     //TURNOS POR PELUQUERO
     @GetMapping(path="/porpeluquero/{id}")
-    public List<TurnoView> getTurnosByPeluqueroe(@PathVariable int id){
-        List<TurnoView> turnos = turnoService.findAll().stream().map(Turno::toView).toList();
-        List<TurnoView> turnosOk= new ArrayList<>();
-        for (TurnoView turno: turnos){
+    public List<Turno> getTurnosByPeluqueroe(@PathVariable int id){
+        List<Turno> turnos = turnoService.findAll().stream().toList();
+        List<Turno> turnosOk= new ArrayList<>();
+        for (Turno turno: turnos){
             if (id == turno.getPeluquero().getId()){
                 turnosOk.add(turno);
             }

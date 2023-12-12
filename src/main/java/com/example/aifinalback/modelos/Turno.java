@@ -1,4 +1,4 @@
-package com.example.aifinalback.modelo;
+package com.example.aifinalback.modelos;
 
 import com.example.aifinalback.views.TurnoView;
 import jakarta.persistence.*;
@@ -23,7 +23,7 @@ public class Turno {
     private int id;
     private Date fecha;
     private String descripcion;
-    private int monto;
+    private float monto;
 
     @ManyToOne // Cambiado a OneToOne si la relación es exactamente uno a uno
     @JoinColumn(name = "id_cliente") // Nombre de la columna que actúa como clave foránea en la tabla de Turno
@@ -61,11 +61,11 @@ public class Turno {
         this.descripcion = descripcion;
     }
 
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
 
-    public void setMonto(int monto) {
+    public void setMonto(float monto) {
         this.monto = monto;
     }
 
@@ -86,6 +86,6 @@ public class Turno {
     }
 
     public TurnoView toView(){
-        return new TurnoView(id, fecha, descripcion, monto, cliente, peluquero);
+        return new TurnoView(id, fecha, descripcion, monto);
     }
 }

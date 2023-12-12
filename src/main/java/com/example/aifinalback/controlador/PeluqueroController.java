@@ -1,7 +1,7 @@
 package com.example.aifinalback.controlador;
 
 import com.example.aifinalback.exceptions.PeluqueroException;
-import com.example.aifinalback.modelo.Peluquero;
+import com.example.aifinalback.modelos.Peluquero;
 import com.example.aifinalback.servicios.interfaces.IPeluqueroService;
 import com.example.aifinalback.views.PeluqueroView;
 import lombok.extern.slf4j.Slf4j;

@@ -1,13 +1,10 @@
 package com.example.aifinalback.controlador;
 
 import com.example.aifinalback.exceptions.ClienteException;
-import com.example.aifinalback.modelo.Cliente;
+import com.example.aifinalback.modelos.Cliente;
 import com.example.aifinalback.servicios.interfaces.IClienteService;
 import com.example.aifinalback.views.ClienteView;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,7 +48,5 @@ public class ClienteController {
     public ClienteView buscarCliente(@PathVariable int id) throws ClienteException {
         return clienteService.findById(id).orElseThrow(() -> new ClienteException("Cliente no encontrado")).toView();
     }
-
-
 
 }

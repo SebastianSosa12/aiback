@@ -1,4 +1,4 @@
-package com.example.aifinalback.modelo;
+package com.example.aifinalback.modelos;
 
 import com.example.aifinalback.views.ClienteView;
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package com.example.aifinalback.servicios.implemented;
 
-import com.example.aifinalback.modelo.Peluquero;
+import com.example.aifinalback.modelos.Peluquero;
 import com.example.aifinalback.repositorios.PeluqueroRepositorio;
 import com.example.aifinalback.servicios.interfaces.IPeluqueroService;
 import lombok.extern.slf4j.Slf4j;
