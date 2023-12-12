@@ -27,11 +27,6 @@ public class PeluqueroController {
         log.debug("Called getPeluqueros from Controller");
         return peluqueroService.findAll().stream().map(Peluquero::toView).toList();
     }
-    //AGREGAR PELUQUERO
-    @PostMapping
-    public PeluqueroView agregarPeluquero(@RequestBody Peluquero peluquero){
-        return peluqueroService.save(peluquero).toView();
-    }
     //GUARDAR PELUQUERO
     @PostMapping
     public Peluquero guardarPeluquero(@RequestBody Peluquero peluquero){

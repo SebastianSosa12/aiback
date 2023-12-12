@@ -31,11 +31,6 @@ public class ClienteController {
         return clienteService.findAll().stream().map(Cliente::toView).toList();
     }
 
-    //AGREGAR CLIENTE
-    @PostMapping
-    public ClienteView agregarCliente(@RequestBody Cliente cliente){
-        return clienteService.save(cliente).toView();
-    }
     //GUARDAR CLIENTE
     @PostMapping
     public Cliente guardarCliente(@RequestBody Cliente cliente){

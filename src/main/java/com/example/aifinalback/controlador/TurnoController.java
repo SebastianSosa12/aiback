@@ -28,11 +28,6 @@ public class TurnoController {
         log.debug("Called getTurnos from Controller");
         return turnoService.findAll().stream().map(Turno::toView).toList();
     }
-    //AGREGAR TURNO
-    @PostMapping
-    public TurnoView agregarTurno(@RequestBody Turno turno){
-        return turnoService.save(turno).toView();
-    }
     //GUARDAR TURNO
     @PostMapping
     public Turno guardarTurno(@RequestBody Turno turno){
